@@ -27,7 +27,7 @@ class UserInfo(models.Model):
     # 2、置空
     depart = models.ForeignKey(to="DepartInfo", to_field="id", null=True, blank=True, on_delete=models.SET_NULL)
     # 性别
-    # 在django中设置约束ma
+    # 在django中设置约束码
     gender_choices = {
         (1, "男"),
         (2, "女"),
