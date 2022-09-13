@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    {% block css %}
+    {% endblock %}
     <style>
         .navbar {
             border-radius: 0;
@@ -29,8 +31,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/depart/list">部门管理</a></li>
-                <li><a href="/user/list">用户管理</a></li>
+                <li><a href="/depart/list?page=1">部门管理</a></li>
+                <li><a href="/user/list?page=1">用户管理</a></li>
+                <li><a href="/prettynum/list?page=1">靓号管理</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -60,5 +63,7 @@
 
 <script src="{% static 'js/jquery-3.6.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.min.js' %}"></script>
+{% block js %}
+{% endblock %}
 </body>
 </html>

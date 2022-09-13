@@ -1,11 +1,16 @@
 {% extends 'layout.html' %}
+
 {% block content %}
-     <div class="container">
+    <div class="container">
         <!--按钮区域-->
         <div style="margin-bottom: 10px">
             <a class="btn btn-success" href="/user/add">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                 新增用户
+            </a>
+            <a class="btn btn-success" href="/user/modelform/add">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                新增用户(modelform)
             </a>
         </div>
         <!--表格区域-->
@@ -31,23 +36,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for obj in user_queryset %}
+                {% for obj in queryset %}
                     <tr>
                         <th scope="row">{{ obj.id }}</th>
                         <td>{{ obj.name }}</td>
                         <td>{{ obj.age }}</td>
                         <td>{{ obj.account }}</td>
-                        <td>{{ obj.creat_time|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ obj.creat_time|date:"Y-m-d" }}</td>
                         <td>{{ obj.depart.depart_name }}</td>
                         <td>{{ obj.get_gender_display }}</td>
                         <td>
                             <a class="btn btn-primary btn-xs" href="/user/{{ obj.id }}/edit">编辑</a>
-                            <a class="btn btn-danger btn-xs" href="/user/delete?nid={{ obj.id }}">删除</a>
+                            <a class="btn btn-danger btn-xs" href="/user/{{ obj.id }}/delete">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
+        </div>
+        <div class="container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        {{ page_string }}
+                    </ul>
+                </nav>
         </div>
     </div>
 {% endblock %}
