@@ -40,7 +40,10 @@ class Pagination(object):
         self.page_size = page_size
         self.start = (self.page - 1) * self.page_size
         self.end = self.page * self.page_size
-        self.page_queryset = queryset[self.start:self.end]
+        if queryset.count() == 0:
+            self.page_queryset = queryset
+        else:
+            self.page_queryset = queryset[self.start:self.end]
         self.plus = plus
 
     def html(self):

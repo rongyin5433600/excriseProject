@@ -15,21 +15,32 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from UserManagement.view import userviews, departviews, prettynumviews
+from UserManagement.view import userviews, departviews, prettynumviews, adminview, accountview
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
+    # 部门管理
     path('depart/list', departviews.depart_list),
     path('depart/add', departviews.depart_add),
     path('depart/delete', departviews.depart_delete),
     path('depart/<int:nid>/edit', departviews.depart_edit),
+    # 用户管理
     path('user/list', userviews.user_list),
     path('user/add', userviews.user_add),
     path('user/modelform/add', userviews.user_modelform_add),
     path('user/<int:nid>/edit', userviews.user_edit),
     path('user/<int:nid>/delete', userviews.user_delete),
+    # 号码管理
     path('prettynum/list', prettynumviews.prettynum_list),
     path('prettynum/add', prettynumviews.prettynum_add),
     path('prettynum/<int:nid>/edit', prettynumviews.prettynum_edit),
     path('prettynum/<int:nid>/delete', prettynumviews.prettynum_delete),
+    # 管理员管理
+    path('admin/list', adminview.admin_list),
+    path('admin/add', adminview.admin_add),
+    path('admin/<int:nid>/edit', adminview.admin_edit),
+    path('admin/<int:nid>/delete', adminview.admin_delete),
+    path('admin/<int:nid>/reset', adminview.admin_reset),
+    # 登录
+    path('login', accountview.login),
 ]
